@@ -48,7 +48,7 @@ Requirements
 - pip, tkinter, ffmpeg 
 - Updated NVIDIA drivers (only for GPU mode) 
 
-To install the app in your local environment follow these steps:
+To install the app in your local environment, follow these steps:
 
 ### Clone the repository
 

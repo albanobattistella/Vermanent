@@ -1,0 +1,6 @@
+openai-whisper
+pillow~=11.3.0
+customtkinter~=5.2.2
+spacy~=3.8.7
+stanza~=1.10.1
+reportlab~=4.4.2

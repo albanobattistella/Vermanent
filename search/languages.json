@@ -1,0 +1,39 @@
+{
+  "it": {
+    "model": "search/search_models/it",
+    "spacy": false
+  },
+  "en": {
+    "model": "en_core_web_lg",
+    "spacy": true
+  },
+  "zh": {
+    "model": "zh_core_web_lg",
+    "spacy": true
+  },
+  "fr": {
+    "model": "fr_core_news_lg",
+    "spacy": true
+  },
+  "de": {
+    "model": "de_core_news_lg",
+    "spacy": true
+  },
+  "es": {
+    "model": "es_core_news_lg",
+    "spacy": true
+  },
+  "ro": {
+    "model": "ro_core_news_lg",
+    "spacy": true
+  },
+  "ru": {
+    "model": "ru_core_news_sm",
+    "spacy": true
+  },
+  "sl": {
+    "model": "sl_core_news_lg",
+    "spacy": true
+  }
+}
+

@@ -107,21 +107,21 @@ python3 main.py
 ```
 
 ---
-## Make use of custom word embeddings models
+## Make use of custom word embedding models
 
-To make your chosen model works follow these steps (fasttext model is used as an example):
+To make your chosen model work, follow these steps (fasttext model is used as an example):
 
 - Download fasttext model with only vectors here (not bin file): https://fasttext.cc/docs/en/crawl-vectors.html
 
 - Initialize the model. Model path should be in the directory "Vermanent\search\search_models\".
 
-To initialize the model run this command ([lang] have to be a ISO 639 language code of the set 1, that you can find here: https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes):
+To initialize the model, run this command ([lang] has to be an ISO 639 language code of the set 1, which you can find here: https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes):
 ```
 python -m spacy init vectors [lang] "path\to\cc.[lang].300.vec" "Vermanent\search\search_models\[lang]"
 ```
 
 - Then update [languages.json](search%2Flanguages.json) file.
-You have to add a new language pipeline if not exist or modify an existing one.
+You have to add a new language pipeline if it does not exist or modify an existing one.
 Add this to the json list:
 ```
 "[lang]": {
@@ -134,8 +134,8 @@ Add this to the json list:
 
 ## Usage
 ### Case creation
-- You can only use alphanumeric chars, "-" and "_" to assign a name to a case.
-- When selecting the folder where the evidences to be analysed are contained, it is not necessary that the folder contains only audio files. Vermanent will automatically select only files of interest, even within .zip, .tar or .gz archives.
+- You can only use alphanumeric chars, "-", and "_" to assign a name to a case.
+- When selecting the folder where the evidence to be analysed is contained, it is not necessary that the folder contains only audio files. Vermanent will automatically select only files of interest, even within .zip, .tar, or .gz archives.
 
 ### Transcription 
 
@@ -147,11 +147,11 @@ Add this to the json list:
 
 ### Search 
 - Vermanent search process works with several languages, but for now only one at a time.
-- You can search for multiple words, sentences or single words. 
+- You can search for multiple words, sentences, or single words. 
 
 ## Support
 
-If you find this project useful, and you want to support my work, consider giving it a ⭐ on GitHub or sharing it with others.
+If you find this project useful and you want to support my work, consider giving it a ⭐ on GitHub or sharing it with others.
 
 Contributions and feedback are welcome!
 
@@ -162,6 +162,6 @@ For full details, see the [LICENSE](./LICENSE) file.
 
 ## Third-party content 
 
-This project makes use of pre-trained spaCy models (e.g., `en_core_web_lg`, `it_core_news_lg`), which are licensed separately and are **not** covered by the GPL license of this repository.
+This project makes use of pre-trained spaCy models (e.g., `en_core_web_lg`), which are licensed separately and are **not** covered by the GPL license of this repository.
 
 Please refer to [spaCy’s license page](https://spacy.io/usage/models) to understand the terms for each model. You are responsible for complying with those terms when using them.

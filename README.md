@@ -160,8 +160,19 @@ Contributions and feedback are welcome!
 This code is licensed under the GNU General Public License v3.0 (GPL-3.0), which allows modification and redistribution under the same terms.  
 For full details, see the [LICENSE](./LICENSE) file.
 
-## Third-party content 
+# Model Attributions
 
-This project makes use of pre-trained spaCy models (e.g., `en_core_web_lg`), which are licensed separately and are **not** covered by the GPL license of this repository.
+This file lists third-party NLP models that may be downloaded automatically by the application.
+Each model is licensed separately and not covered by the GPL license of this repository.
 
-Please refer to [spaCy’s license page](https://spacy.io/usage/models) to understand the terms for each model. You are responsible for complying with those terms when using them.
+| Language | Model                           | Author    | License      |
+|----------|---------------------------------|-----------|--------------|
+| `en`     | `en_core_web_lg`                | Explosion | MIT          |
+| `zh`     | `zh_core_web_lg`                | Explosion | MIT          |
+| `fr`     | `fr_core_news_lg`               | Explosion | LGPL-LR      |
+| `de`     | `de_core_news_lg`               | Explosion | MIT          |
+| `es`     | `es_core_news_lg`               | Explosion | GNU GPL 3.0  |
+| `ro`     | `ro_core_news_lg`               | Explosion | CC BY-SA 4.0 |
+| `ru`     | `ru_core_news_sm`               | Explosion | MIT          |
+| `sl`     | `sl_core_news_lg`               | Explosion | CC BY-SA 4.0 |
+| `-`      | `fasttext (e.g., cc.*.300.vec)` | Meta      | MIT          |

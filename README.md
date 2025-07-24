@@ -5,6 +5,8 @@
 <p align="center">
   <a href="https://www.python.org/"><img alt="Python" src="https://img.shields.io/badge/python-3.11-blue"></a>
   <a href="https://choosealicense.com/licenses/gpl-3.0/"><img alt="License: GPL v3" src="https://img.shields.io/badge/License-GPLv3-yellow.svg"></a>
+  <a href="https://buymeacoffee.com/leonardo.corsini"><img alt="Make a donation" src="https://img.shields.io/badge/Make a donation-red.svg"></a>
+  
 </p>
 
 ---
@@ -152,7 +154,8 @@ It is also recommended to rerun the install_spacy_models.py script to automatica
 
 ## Support
 
-If you find this project useful and you want to support my work, consider giving it a ⭐ on GitHub or sharing it with others.
+If you find this project useful and you want to support my work, consider giving it a ⭐ on GitHub, sharing it with others.
+You could donate on https://buymeacoffee.com/leonardo.corsini to support the development. I will be grateful for any donation you want to make.
 
 Contributions and feedback are welcome!
 

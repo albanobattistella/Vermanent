@@ -95,7 +95,7 @@ This app rely on external embedding models to work properly, that are differentl
 If you want to use spacy trained pipelines you can run the script [install_spacy_models.py](install_spacy_models.py) to automatically download them with this command (only spacy models will be automatically downloaded):
 
 ```
-python3 install_spacy_models.py
+python install_spacy_models.py
 ```
 The italian spacy pipeline has a CC-BY-NC-SA licence, and it's not compatible with the licence of this code (GNU GPL 3.0). If you want to add an italian model you can follow the steps described in the "Make use of custom word embeddings models" section, using FastText it model, that is more permissive.
 
@@ -103,7 +103,7 @@ To run the application go in Vermanent folder and activate virtual environment.
 Then run:
 
 ```
-python3 main.py
+python main.py
 ```
 
 ---
@@ -121,7 +121,7 @@ python -m spacy init vectors [lang] "path\to\cc.[lang].300.vec" "Vermanent\searc
 ```
 
 - Then update [languages.json](search%2Flanguages.json) file.
-You have to add a new language pipeline if it does not exist or modify an existing one.
+You have to add a new language field if it does not exist or modify an existing one.
 Add this to the json list:
 ```
 "[lang]": {
@@ -129,7 +129,7 @@ Add this to the json list:
     "spacy": false
   },
 ```
-
+It is also recommended to rerun the install_spacy_models.py script to automatically download the correct stanza pipeline.
 ---
 
 ## Usage
@@ -141,7 +141,7 @@ Add this to the json list:
 
 - With Vermanent you can choose the Whisper model that best suits your needs, but only when starting the app. Until the next restart, the app will use the previously loaded model.
 
-- It is recommended to use an accurate transcription template in order not to affect the quality of the search.
+- It is recommended to use an accurate transcription model in order not to affect the quality of the search.
 
 - Vermanent works with GPU with CUDA architectures.
 
@@ -175,4 +175,4 @@ Each model is licensed separately and not covered by the GPL license of this rep
 | `ro`     | `ro_core_news_lg`               | Explosion | CC BY-SA 4.0 |
 | `ru`     | `ru_core_news_sm`               | Explosion | MIT          |
 | `sl`     | `sl_core_news_lg`               | Explosion | CC BY-SA 4.0 |
-| `-`      | `fasttext (e.g., cc.*.300.vec)` | Meta      | MIT          |
+| `-`      | `fasttext (e.g., cc.*.300.vec)` | Meta      | CC BY-SA 3.0 |

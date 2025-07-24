@@ -130,6 +130,7 @@ Add this to the json list:
   },
 ```
 It is also recommended to rerun the install_spacy_models.py script to automatically download the correct stanza pipeline.
+
 ---
 
 ## Usage
@@ -160,7 +161,7 @@ Contributions and feedback are welcome!
 This code is licensed under the GNU General Public License v3.0 (GPL-3.0), which allows modification and redistribution under the same terms.  
 For full details, see the [LICENSE](./LICENSE) file.
 
-# Model Attributions
+## Model Attributions
 
 This file lists third-party NLP models that may be downloaded automatically by the application.
 Each model is licensed separately and not covered by the GPL license of this repository.

@@ -71,9 +71,6 @@ class Preprocessor(Thread,):
                     for sent in doc_stanza.sentences:
                         stanza_tokens.extend(sent.words)
 
-                    if len(doc) != len(stanza_tokens):
-                        print("Warning: token count mismatch")
-
                     for token_spacy, token_stanza in zip(doc, stanza_tokens):
                         token_spacy.lemma_ = token_stanza.lemma
                         token_spacy.pos_ = token_stanza.upos

@@ -392,7 +392,7 @@ class EvidenceView:
         self.evidence_data.search_state = "searching"
         searched_text_lang = self.search_language_dropdown.get()
         # number_of_workers = os.cpu_count() - 6
-        number_of_workers = 3
+        number_of_workers = 4
         self.search_status_bar.grid(row=5,
                                     column=5,
                                     columnspan=2,
@@ -417,9 +417,7 @@ class EvidenceView:
                                                                      sync_data=sync_data,
                                                                      db=self.db,
                                                                      data=data[i * section_number:]))
-
             else:
-                print(section_number)
                 self.evidence_data.preprocessors.append(Preprocessor(case_name=self.evidence_data.case_name,
                                                                      evidence=self.evidence_data.evidence,
                                                                      searched_text=searched_text,

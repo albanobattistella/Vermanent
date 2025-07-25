@@ -35,10 +35,10 @@ It works locally to guarantee data privacy, and it makes use of an intuitive int
 ## Features 
 
 - Search across transcripts using semantic similarity
-- Analyze voice messages from forensic copies
-- Uses spaCy or custom FastText embeddings
+- Analyze voice messages from a directory or a zip, tar, gz file
+- Uses spaCy or custom embeddings
 - Works locally, no data leaves your machine
-- GPU acceleration via CUDA-supported PyTorch
+- GPU acceleration for transcriptions via CUDA-supported PyTorch
 
 ---
 
@@ -139,22 +139,24 @@ It is also recommended to rerun the install_spacy_models.py script to automatica
 ### Case creation
 - You can only use alphanumeric chars, "-", and "_" to assign a name to a case.
 - When selecting the folder where the evidence to be analysed is contained, it is not necessary that the folder contains only audio files. Vermanent will automatically select only files of interest, even within .zip, .tar, or .gz archives.
+- You can make several transcriptions and searches at a time, but the overhaul performance depends on your machine, so it's raccomanded to not overload too much the system.
 
 ### Transcription 
 
 - With Vermanent you can choose the Whisper model that best suits your needs, but only when starting the app. Until the next restart, the app will use the previously loaded model.
 
-- It is recommended to use an accurate transcription model in order not to affect the quality of the search.
+- It is recommended to use an accurate transcription model in order not to affect the quality of the search, but if large model is too slow, the turbo model could be a great solution.
 
 - Vermanent works with GPU with CUDA architectures.
 
 ### Search 
 - Vermanent search process works with several languages, but for now only one at a time.
 - You can search for multiple words, sentences, or single words. 
+- Search use only CPU for now, but GPU compatibility is in development. This could take couple of minutes for each search depending on the system and the number of data.
 
 ## Support
 
-If you find this project useful and you want to support my work, consider giving it a ⭐ on GitHub, sharing it with others.
+If you find this project useful, and you want to support my work, consider giving it a ⭐ on GitHub, sharing it with others.
 You could donate on https://buymeacoffee.com/leonardo.corsini to support the development. I will be grateful for any donation you want to make.
 
 Contributions and feedback are welcome!
@@ -180,3 +182,10 @@ Each model is licensed separately and not covered by the GPL license of this rep
 | `ru`     | `ru_core_news_sm`               | Explosion | MIT          |
 | `sl`     | `sl_core_news_lg`               | Explosion | CC BY-SA 4.0 |
 | `-`      | `fasttext (e.g., cc.*.300.vec)` | Meta      | CC BY-SA 3.0 |
+
+
+## Disclaimer
+
+The use of this software is entirely at the user’s own risk. 
+The author accepts no liability for any direct or indirect consequences resulting from its use, including but not limited to unauthorized access, violation of privacy laws, or improper handling of data. 
+It is the user’s sole responsibility to ensure that any use of this tool complies with all applicable laws and regulations in their jurisdiction.

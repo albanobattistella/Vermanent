@@ -16,7 +16,9 @@ class Preprocessor(Thread,):
                  sync_data: SearchSyncData,
                  searched_text: str,
                  searched_text_lang: str,
-                 db):
+                 db,
+                 data):
+        self.data = data
         self.searched_text_lang = searched_text_lang
         self._nlp = dict()
         with open("search/languages.json", "r") as file:
@@ -104,18 +106,12 @@ class Preprocessor(Thread,):
     def run(self):
         self.db_interface.remove_current_search(case_name=self.case_name,
                                                 evidence=self.evidence)
-
-        data = self.db_interface.take_transcribed_text(case_name=self.case_name,
-                                                       evidence=self.evidence)
-        print(data)
-
-        for d in data:
+        nlp_searched_text = self.prepare_for_search(text=self.searched_text,
+                                                    language=self.searched_text_lang)
+        for d in self.data:
             self.db_interface.insert_file_id_and_evidence(case_name=self.case_name,
                                                           evidence=self.evidence,
                                                           file_id=d["id"])
-        nlp_searched_text = self.prepare_for_search(text=self.searched_text,
-                                                    language=self.searched_text_lang)
-        for d in data:
             self.sync_data.put_on_to_analyze_queue({
                 "id": d["id"],
                 "nlp": self.prepare_for_search(text=d["text"],

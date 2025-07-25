@@ -1,0 +1,5 @@
+.venv
+db/cases/*
+search/search_models/*
+.idea
+__pycache__

@@ -1,4 +1,6 @@
 import json
+import os
+
 from customtkinter import CTkLabel, CTkButton, CTkProgressBar, CTkEntry, CTkComboBox
 from db.DbInterface import DbInterface
 from search.Calculator import Calculator
@@ -389,6 +391,8 @@ class EvidenceView:
         searched_text = self.search_entry.get()
         self.evidence_data.search_state = "searching"
         searched_text_lang = self.search_language_dropdown.get()
+        # number_of_workers = os.cpu_count() - 6
+        number_of_workers = 3
         self.search_status_bar.grid(row=5,
                                     column=5,
                                     columnspan=2,
@@ -397,24 +401,43 @@ class EvidenceView:
                                 evidence=self.evidence_data.evidence,
                                 last_search=searched_text)
         self.last_search_label.configure(text=searched_text)
-
+        data = self.db.take_transcribed_text(case_name=self.evidence_data.case_name,
+                                             evidence=self.evidence_data.evidence)
+        if number_of_workers < 2:
+            number_of_workers = 2
+        section_number = int(len(data) / (number_of_workers - 1))
         sync_data = SearchSyncData(self.evidence_data.case_name,
                                    self.evidence_data.evidence)
-        preprocessor = Preprocessor(case_name=self.evidence_data.case_name,
-                                    evidence=self.evidence_data.evidence,
-                                    searched_text=searched_text,
-                                    searched_text_lang=searched_text_lang,
-                                    sync_data=sync_data,
-                                    db=self.db)
+        for i in range(0, number_of_workers - 1):
+            if i == number_of_workers - 1:
+                self.evidence_data.preprocessors.append(Preprocessor(case_name=self.evidence_data.case_name,
+                                                                     evidence=self.evidence_data.evidence,
+                                                                     searched_text=searched_text,
+                                                                     searched_text_lang=searched_text_lang,
+                                                                     sync_data=sync_data,
+                                                                     db=self.db,
+                                                                     data=data[i * section_number:]))
+
+            else:
+                print(section_number)
+                self.evidence_data.preprocessors.append(Preprocessor(case_name=self.evidence_data.case_name,
+                                                                     evidence=self.evidence_data.evidence,
+                                                                     searched_text=searched_text,
+                                                                     searched_text_lang=searched_text_lang,
+                                                                     sync_data=sync_data,
+                                                                     db=self.db,
+                                                                     data=data[i * section_number:
+                                                                               i * section_number + section_number]))
+
         calculator = Calculator(case_name=self.evidence_data.case_name,
                                 evidence=self.evidence_data.evidence,
                                 searched_text=searched_text,
                                 search_sync_data=sync_data,
                                 db=self.db)
         calculator.attach(self.search_finished_observer)
-        self.evidence_data.taker = preprocessor
-        self.evidence_data.searchers.append(calculator)
-        preprocessor.start()
+        self.evidence_data.calculator = calculator
+        for p in self.evidence_data.preprocessors:
+            p.start()
         calculator.start()
         self.search_status_bar.start()
 
@@ -430,7 +453,8 @@ class EvidenceView:
         if self.evidence_data.state != "creating":
             already_analyzed_number = self.evidence_data.sync_data.get_already_analyzed_size()
             total_number_of_files = self.evidence_data.sync_data.get_size()
-            label_text = str(already_analyzed_number) + "/" + str(total_number_of_files) + " " + language["analyzed_files"]
+            label_text = str(already_analyzed_number) + "/" + str(total_number_of_files) + " " + language[
+                "analyzed_files"]
             self.number_analyzed_files_label.configure(text=label_text)
         if self.last_search_label.cget("text") == self.language["no_previous_search"]:
             self.last_search_label.configure(text=language["no_previous_search"])

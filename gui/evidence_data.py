@@ -29,8 +29,8 @@ class EvidenceData(Subject):
         self.language = language
         self.transcription_manager = None
         self.transcribers = None
-        self.searchers = []
-        self.taker = None
+        self.preprocessors = []
+        self.calculator = None
 
     def set_state(self,
                   state):

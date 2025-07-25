@@ -1,5 +1,5 @@
 {
   "app_lang": "en",
   "operation_mode": "GPU",
-  "whisper_model": "large"
+  "whisper_model": "turbo"
 }
